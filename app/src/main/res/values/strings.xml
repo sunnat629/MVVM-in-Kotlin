@@ -8,4 +8,6 @@
     <string name="hint_address">Address…</string>
 
     <string name="button_save">Save</string>
+
+    <string name="result_replay">ResultReplay</string>
 </resources>

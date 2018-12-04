@@ -7,7 +7,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import com.sunnat629.mvvmroomexample.Config
 import com.sunnat629.mvvmroomexample.R
 import com.sunnat629.mvvmroomexample.model.Users
 import com.sunnat629.mvvmroomexample.ui.adapter.UserListAdapter
@@ -50,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == this.requestCode && resultCode == Activity.RESULT_OK){
-            val users: Users = data!!.extras.getParcelable(Config().EXTRA_REPLY) as Users
+            val users: Users = data!!.extras.getParcelable(getString(R.string.result_replay)) as Users
             mMainViewModel.insert(users)
         }
     }

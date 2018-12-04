@@ -8,7 +8,6 @@ import android.support.design.widget.Snackbar
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
-import com.sunnat629.mvvmroomexample.Config
 import com.sunnat629.mvvmroomexample.R
 import com.sunnat629.mvvmroomexample.model.Users
 import kotlinx.android.synthetic.main.activity_new_user.*
@@ -43,7 +42,7 @@ class NewUserActivity : AppCompatActivity(), View.OnClickListener {
                 // If an instance of this Activity already exists, then it will be moved to the front.
                 // If an instance does NOT exist, a new instance will be created.
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-                intent.putExtra(Config().EXTRA_REPLY, users)
+                intent.putExtra(getString(R.string.result_replay), users)
                 setResult(Activity.RESULT_OK, intent)
             }
             finish()

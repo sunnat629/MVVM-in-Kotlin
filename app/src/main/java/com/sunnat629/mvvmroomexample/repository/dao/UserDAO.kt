@@ -1,4 +1,4 @@
-package com.sunnat629.mvvmroomexample.dao
+package com.sunnat629.mvvmroomexample.repository.dao
 
 import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.Dao

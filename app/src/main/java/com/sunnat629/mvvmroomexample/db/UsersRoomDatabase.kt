@@ -4,10 +4,8 @@ import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
-import com.sunnat629.mvvmroomexample.dao.UserDAO
+import com.sunnat629.mvvmroomexample.repository.dao.UserDAO
 import com.sunnat629.mvvmroomexample.model.Users
-import android.arch.persistence.db.SupportSQLiteDatabase
-import android.os.AsyncTask
 
 
 @Database(entities = [Users::class], version = 1)
