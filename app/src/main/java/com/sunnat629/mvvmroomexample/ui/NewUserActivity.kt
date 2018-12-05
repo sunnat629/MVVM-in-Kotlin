@@ -22,7 +22,7 @@ class NewUserActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         if (view!!.id == R.id.buttonSave){
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent()
             if (isTextFieldEmpty()){
                 Snackbar.make(view, "Empty Field", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()

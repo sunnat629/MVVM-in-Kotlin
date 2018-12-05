@@ -5,6 +5,7 @@ buildscript {
     ext.roomVersion = '1.1.1'
     ext.archLifecycleVersion = '1.1.1'
     ext.androidxRoomRuntime = "2.1.0-alpha2"
+    ext.coroutines = '1.0.1'
 
     repositories {
         google()

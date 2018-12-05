@@ -9,31 +9,32 @@ import android.widget.TextView
 import com.sunnat629.mvvmroomexample.R
 import com.sunnat629.mvvmroomexample.model.Users
 import kotlinx.android.synthetic.main.recyclerview_item.view.*
-import java.util.*
 
-class UserListAdapter(context: Context) : RecyclerView.Adapter<UserListAdapter.UserViewHolder>() {
+class UserListAdapter internal constructor(context: Context) :
+    RecyclerView.Adapter<UserListAdapter.UserViewHolder>() {
+
     private val mLayoutInflater: LayoutInflater = LayoutInflater.from(context)!!
-    private var mUsers: List<Users> = Collections.emptyList()
+    private var mUsers: List<Users> = emptyList() // Cached copy of users
 
 
-    class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val rowItem: TextView = itemView.rowItem
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListAdapter.UserViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val itemView: View = mLayoutInflater.inflate(R.layout.recyclerview_item, parent, false)
         return UserViewHolder(itemView)
+    }
+
+    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
+        holder.rowItem.text = mUsers[position].toString()
     }
 
     override fun getItemCount(): Int {
         return mUsers.size
     }
 
-    override fun onBindViewHolder(holder: UserListAdapter.UserViewHolder, position: Int) {
-        holder.rowItem.text = mUsers[position].toString()
-    }
-
-    fun addUser(users: List<Users>){
+    internal fun setNewUser(users: List<Users>) {
         mUsers = users
         notifyDataSetChanged()
     }

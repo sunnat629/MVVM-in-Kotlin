@@ -25,15 +25,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        mMainViewModel = ViewModelProviders.of(this).get(MainViewModel(application)::class.java)
         val userListAdapter = UserListAdapter(this)
         recyclerview.adapter = userListAdapter
         recyclerview.layoutManager =  LinearLayoutManager(this)
 
-
+        mMainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         mMainViewModel.getAllUsers().observe(this,
-            Observer<List<Users>> {
-                    userList -> userListAdapter.addUser(userList!!)
+            Observer {
+                    userList -> userListAdapter.setNewUser(userList!!)
             })
 
 
@@ -49,8 +48,10 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == this.requestCode && resultCode == Activity.RESULT_OK){
-            val users: Users = data!!.extras.getParcelable(getString(R.string.result_replay)) as Users
+            data?.let {
+            val users: Users = it.getParcelableExtra(getString(R.string.result_replay)) as Users
             mMainViewModel.insert(users)
+            }
         }
     }
 }

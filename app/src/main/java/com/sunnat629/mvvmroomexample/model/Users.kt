@@ -9,13 +9,6 @@ import android.support.annotation.NonNull
 
 @Entity(tableName = "users")
 class Users(): Parcelable {
-    constructor(username: String, email: String, contactNumber: String, address: String):this(){
-        this.username = username
-        this.email = email
-        this.contactNumber = contactNumber
-        this.address = address
-    }
-
     @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "userId")
@@ -36,6 +29,13 @@ class Users(): Parcelable {
    @NonNull
     @ColumnInfo(name = "address")
     lateinit var address: String
+
+    constructor(username: String, email: String, contactNumber: String, address: String):this(){
+        this.username = username
+        this.email = email
+        this.contactNumber = contactNumber
+        this.address = address
+    }
 
     constructor(parcel: Parcel) : this() {
         userId = parcel.readInt()
@@ -70,6 +70,4 @@ class Users(): Parcelable {
             return arrayOfNulls(size)
         }
     }
-
-
 }
